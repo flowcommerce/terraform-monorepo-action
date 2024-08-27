@@ -1,6 +1,7 @@
 # terraform-monorepo-action
 
 This GitHub action returns an array of paths to Terraform modules.
+Repo is a fork of theappnest/terraform-monorepo-action, which looks like it isn't maintained at the moment.
 
 ## Usage
 
@@ -9,7 +10,7 @@ jobs:
   modules:
     runs-on: ubuntu-latest
     steps:
-      - uses: theappnest/terraform-monorepo-action@master
+      - uses: flowcommerce/terraform-monorepo-action@master
         id: modules
         with:
           monitored: '.tpl, .hcl, .terraform.lock.hcl'
@@ -30,8 +31,8 @@ jobs:
       run:
         working-directory: ${{ matrix.module }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: hashicorp/setup-terraform@v1
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
       - run: terraform init
       - run: terraform plan
 ```
