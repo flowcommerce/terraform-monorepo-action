@@ -3,6 +3,10 @@
 This GitHub action returns an array of paths to Terraform modules.
 Repo is a fork of theappnest/terraform-monorepo-action, which looks like it isn't maintained at the moment.
 
+> **Note:** This repository must remain **public** because GitHub Actions
+> can only reference actions from public repositories (unless using
+> GitHub Enterprise). Our private terraform repos depend on this action.
+
 ## Usage
 
 ```yaml
@@ -10,7 +14,7 @@ jobs:
   modules:
     runs-on: ubuntu-latest
     steps:
-      - uses: flowcommerce/terraform-monorepo-action@master
+      - uses: flowcommerce/terraform-monorepo-action@main
         id: modules
         with:
           monitored: '.tpl, .hcl, .terraform.lock.hcl'
