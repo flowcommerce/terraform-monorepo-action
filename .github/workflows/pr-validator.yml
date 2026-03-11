@@ -1,0 +1,7 @@
+name: "PR Title and Description Check"
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+jobs:
+  validate:
+    uses: ./.github/workflows/pr-validator-impl.yml
