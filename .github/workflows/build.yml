@@ -21,9 +21,10 @@ jobs:
       - run: yarn tsc
       - run: yarn lint
       - run: yarn build
-      - uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'chore: build'
-          commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          commit_user_name: github-actions[bot]
-          commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com>
+      - name: Check dist/ is up to date
+        run: |
+          if [ -n "$(git diff --name-only)" ]; then
+            echo "dist/ is out of date. Run 'yarn build' and commit the result."
+            git diff --stat
+            exit 1
+          fi
