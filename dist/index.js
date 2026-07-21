@@ -244,14 +244,14 @@ exports.getSha = getSha;
 function getModulePaths(files, pathProp, monitored) {
     const result = files === null || files === void 0 ? void 0 : files.reduce((paths, file) => {
         const { dir, base, ext } = path_1.parse(file[pathProp]);
-        // const globalIgnore = ['.github', '.ci', '.terraform']
         if (dir.includes('.github') ||
             dir.includes('.ci') ||
             dir.includes('.terraform')) {
             return paths;
         }
-        if (monitored.includes(ext) || monitored.includes(base)) {
-            // if (ext === '.tf' || base === '.terraform.lock.hcl') {
+        if (monitored.includes('*') ||
+            monitored.includes(ext) ||
+            monitored.includes(base)) {
             paths.push(dir);
         }
         return paths;
