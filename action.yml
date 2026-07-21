@@ -14,7 +14,7 @@ inputs:
     description: List of module path globs to ignore. Uses gitignore spec.
     required: false
   monitored:
-    description: List of file extensions or base file names to monitor
+    description: List of file extensions or base file names to monitor. Use '*' to monitor all files.
     required: false
     default: '.tf, .tpl, .yaml, .yml, .terraform.lock.hcl'
 outputs:
